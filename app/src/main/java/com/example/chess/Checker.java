@@ -5,14 +5,16 @@ import com.google.common.collect.ImmutableMap;
 import java.util.HashMap;
 import java.util.Map;
 
+import figures.Piece;
+
 public abstract class Checker {
 
     private static final Map<Integer, EmptyChecker> EMPTY_CHECKER_MAP = createAllPossibleEmptyTiles();
 
-    private static Map<Integer,EmptyChecker> createAllPossibleEmptyTiles() {
+    private static Map<Integer,EmptyChecker> createAllPossibleEmptyTiles() {    //Immutable
         final Map<Integer, EmptyChecker> emptyCheckerMap = new HashMap<>();
 
-        for(int i = 0;i < 65; i++){
+        for(int i = 0;i < BoardFuntions.NUMBER_OF_FIELDS; i++){
             emptyCheckerMap.put(i, new EmptyChecker(i));
         }
         return ImmutableMap.copyOf(emptyCheckerMap);
@@ -47,7 +49,7 @@ public abstract class Checker {
 
         @Override
         public Piece getPiece() {
-            return null;
+            return null;        //Empty Checker
         }
 
 
