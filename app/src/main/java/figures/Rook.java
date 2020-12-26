@@ -1,15 +1,15 @@
 package figures;
 
-import com.example.chess.Alliance;
+import com.example.chess.Team;
 import com.example.chess.Board;
 import com.example.chess.Move;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rook extends Piece {
-    public Rook(int position, Alliance alliance) {
-        super(position, alliance);
+public class Cannon extends Piece {
+    public Cannon(int position, Team team) {
+        super(position, team);
     }
 
     @Override

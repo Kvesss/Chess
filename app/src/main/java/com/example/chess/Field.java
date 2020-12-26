@@ -9,9 +9,9 @@ import figures.Piece;
 
 public abstract class Checker {
 
-    private static final Map<Integer, EmptyChecker> EMPTY_CHECKER_MAP = createAllPossibleEmptyTiles();
+    private static final Map<Integer, EmptyChecker> EMPTY_CHECKER_MAP = createAllPossibleEmptyFields();
 
-    private static Map<Integer,EmptyChecker> createAllPossibleEmptyTiles() {    //Immutable
+    private static Map<Integer,EmptyChecker> createAllPossibleEmptyFields() {    //Immutable
         final Map<Integer, EmptyChecker> emptyCheckerMap = new HashMap<>();
 
         for(int i = 0;i < BoardFuntions.NUMBER_OF_FIELDS; i++){
