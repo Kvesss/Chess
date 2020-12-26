@@ -7,29 +7,29 @@ import java.util.Map;
 
 import figures.Piece;
 
-public abstract class Checker {
+public abstract class Field {
 
-    private static final Map<Integer, EmptyChecker> EMPTY_CHECKER_MAP = createAllPossibleEmptyFields();
+    private static final Map<Integer, EmptyField> EMPTY_FIELD_MAP = createAllPossibleEmptyFields();
 
-    private static Map<Integer,EmptyChecker> createAllPossibleEmptyFields() {    //Immutable
-        final Map<Integer, EmptyChecker> emptyCheckerMap = new HashMap<>();
+    private static Map<Integer, EmptyField> createAllPossibleEmptyFields() {    //Immutable
+        final Map<Integer, EmptyField> emptyFieldMap = new HashMap<>();
 
         for(int i = 0;i < BoardFuntions.NUMBER_OF_FIELDS; i++){
-            emptyCheckerMap.put(i, new EmptyChecker(i));
+            emptyFieldMap.put(i, new EmptyField(i));
         }
-        return ImmutableMap.copyOf(emptyCheckerMap);
+        return ImmutableMap.copyOf(emptyFieldMap);
     }
 
-    public static Checker createChecker(final int coordinate, final Piece piece){
+    public static Field createChecker(final int coordinate, final Piece piece){
         if(piece == null){
-            return new EmptyChecker(coordinate);
+            return new EmptyField(coordinate);
         }
-        return new OccupiedChecker(coordinate, piece);
+        return new OccupiedField(coordinate, piece);
     }
 
     protected final int coordinate;
 
-    private Checker(int coordinate){
+    private Field(int coordinate){
         this.coordinate = coordinate;
     }
 
@@ -37,8 +37,8 @@ public abstract class Checker {
 
     public abstract Piece getPiece();
 
-    public static final class EmptyChecker extends Checker{
-        private EmptyChecker(final int coordinate) {
+    public static final class EmptyField extends Field {
+        private EmptyField(final int coordinate) {
             super(coordinate);
         }
 
@@ -55,10 +55,10 @@ public abstract class Checker {
 
 
     }
-    public static final class OccupiedChecker extends Checker{
+    public static final class OccupiedField extends Field {
         private final Piece piece;
 
-        private OccupiedChecker(final int coordinate,final Piece piece) {
+        private OccupiedField(final int coordinate, final Piece piece) {
             super(coordinate);
             this.piece = piece;
         }

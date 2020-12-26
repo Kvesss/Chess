@@ -1,6 +1,6 @@
 package com.example.chess;
 
-public enum Alliance {
+public enum Team {
     WHITE,
     BLACK
 

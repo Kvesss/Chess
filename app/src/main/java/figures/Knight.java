@@ -1,9 +1,9 @@
 package figures;
 
-import com.example.chess.Alliance;
+import com.example.chess.Team;
 import com.example.chess.Board;
 import com.example.chess.BoardFuntions;
-import com.example.chess.Checker;
+import com.example.chess.Field;
 import com.example.chess.Move;
 import com.google.common.collect.ImmutableList;
 
@@ -16,12 +16,12 @@ public class Knight extends Piece {
 
 
 
-    public Knight(int position, Alliance alliance) {
-        super(position, alliance);
+    public Knight(int position, Team team) {
+        super(position, team);
     }
 
     @Override
-    public List<Move> getPossibleMoves(Board board) {
+    public List<Move> getPossibleMoves(final Board board) {
         int destination;
         List<Move> possibleMoves = new ArrayList<>();
         for (int move: possible_moves) {
@@ -29,15 +29,14 @@ public class Knight extends Piece {
             if(BoardFuntions.isValidCoordinate(move)){
 
                 if(!isInvalidEdge(this.position, move)){
-                    Checker destinationChecker = board.getChecker(destination);     /* Not Implemented Yet*/
-                    if(!destinationChecker.isOccupied()){
-                        possibleMoves.add(new Move.EmptyMove(board,this, destination ));      /* Not Implemented Yet*/
+                    Field destinationField = board.getField(destination);
+                    if(!destinationField.isOccupied()){
+                        possibleMoves.add(new Move.EmptyMove(board,this, destination ));
                     }
                     else{
-                        final Piece pieceAtDestination = destinationChecker.getPiece();
-                        final Alliance alliance = pieceAtDestination.getAlliance();
-                        if(this.getAlliance() != alliance){
-                            possibleMoves.add(new Move.AttackMove(board, this, destination, pieceAtDestination));      /* Not Implemented Yet*/
+                        Piece pieceAtDestination = destinationField.getPiece();
+                        if(this.getTeam() != pieceAtDestination.getTeam()){
+                            possibleMoves.add(new Move.AttackMove(board, this, destination, pieceAtDestination));
                         }
                     }
                 }

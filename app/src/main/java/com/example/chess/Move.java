@@ -4,9 +4,9 @@ import figures.Piece;
 
 public abstract class Move {
 
-    private Board board;
-    private Piece pieceMoved;
-    private int destination;
+    private final Board board;
+    private final Piece pieceMoved;
+    private final int destination;
 
     public Move(Board board, Piece pieceMoved, int destination) {
         this.board = board;
