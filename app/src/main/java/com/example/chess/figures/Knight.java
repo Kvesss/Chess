@@ -1,4 +1,4 @@
-package figures;
+package com.example.chess.figures;
 
 import com.example.chess.Team;
 import com.example.chess.Board;

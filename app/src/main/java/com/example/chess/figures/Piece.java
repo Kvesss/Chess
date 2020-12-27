@@ -1,4 +1,4 @@
-package figures;
+package com.example.chess.figures;
 
 import com.example.chess.Team;
 import com.example.chess.Board;
@@ -19,9 +19,9 @@ public abstract class Piece {   //Abstraction of a figure
     public int getPosition() {
         return position;
     }
-
     public Team getTeam() {
         return team;
     }
+
     public abstract List<Move> getPossibleMoves(final Board board);
 }

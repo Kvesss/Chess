@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import java.util.HashMap;
 import java.util.Map;
 
-import figures.Piece;
+import com.example.chess.figures.Piece;
 
 public abstract class Field {
 

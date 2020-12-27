@@ -1,28 +1,28 @@
-package figures;
+package com.example.chess.figures;
 
-import com.example.chess.BoardFuntions;
-import com.example.chess.Field;
 import com.example.chess.Team;
 import com.example.chess.Board;
+import com.example.chess.BoardFuntions;
+import com.example.chess.Field;
 import com.example.chess.Move;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rook extends Piece {
+public class Bishop extends Piece{
 
-    private final static int[] possible_moves_coefficients = { -8, -1, 1, 8};
+    private final static int[] possible_moves_coefficients = { -9, -7, 7, 9};
 
-    public Rook(int position, Team team) {
+    public Bishop(int position, Team team) {
         super(position, team);
     }
 
     private static boolean isInvalidEdgeCaseOne(int position, int coordinate){
-        return BoardFuntions.COLUMN_ONE[position] && (coordinate == -1);
+        return BoardFuntions.COLUMN_ONE[position] && ((coordinate == -9) || (coordinate == 7));
     }
     private static boolean isInvalidEdgeCaseEight(int position, int coordinate){
-        return BoardFuntions.COLUMN_EIGHT[position] && (coordinate == -1);
+        return BoardFuntions.COLUMN_EIGHT[position] && ((coordinate == -7) || (coordinate == 9));
     }
 
     private static boolean isInvalidEdge(int position, int coordinate){

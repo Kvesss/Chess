@@ -1,6 +1,6 @@
 package com.example.chess;
 
-import figures.Piece;
+import com.example.chess.figures.Piece;
 
 public abstract class Move {
 

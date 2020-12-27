@@ -1,7 +1,5 @@
  package com.example.chess;
 
- import figures.Knight;
-
  public class BoardFuntions {
     public static final boolean[] COLUMN_ONE = createColumn(0);
     public static final boolean[] COLUMN_TWO = createColumn(1);
