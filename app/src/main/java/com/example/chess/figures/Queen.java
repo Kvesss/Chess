@@ -5,6 +5,7 @@ import com.example.chess.BoardFuntions;
 import com.example.chess.Field;
 import com.example.chess.Move;
 import com.example.chess.Team;
+import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,6 @@ public class Queen extends Piece{
 
             }
         }
-        return possibleMoves;
+        return ImmutableList.copyOf(possibleMoves);
     }
 }

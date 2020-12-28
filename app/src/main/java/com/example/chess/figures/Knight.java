@@ -14,38 +14,8 @@ public class Knight extends Piece {
 
     private final static int[] possible_moves = { -17, -15, -10, -6, 6, 10, 15, 17};
 
-
-
     public Knight(int position, Team team) {
         super(position, team);
-    }
-
-    @Override
-    public List<Move> getPossibleMoves(final Board board) {
-        int destination;
-        List<Move> possibleMoves = new ArrayList<>();
-        for (int move: possible_moves) {
-            destination = this.position + move;
-            if(BoardFuntions.isValidCoordinate(move)){
-
-                if(!isInvalidEdge(this.position, move)){
-                    Field destinationField = board.getField(destination);
-                    if(!destinationField.isOccupied()){
-                        possibleMoves.add(new Move.EmptyMove(board,this, destination ));
-                    }
-                    else{
-                        Piece pieceAtDestination = destinationField.getPiece();
-                        if(this.getTeam() != pieceAtDestination.getTeam()){
-                            possibleMoves.add(new Move.AttackMove(board, this, destination, pieceAtDestination));
-                        }
-                    }
-                }
-
-
-            }
-        }
-
-        return ImmutableList.copyOf(possibleMoves);
     }
 
     private static boolean isInvalidEdgeCaseOne(int position, int coordinate){
@@ -68,5 +38,29 @@ public class Knight extends Piece {
                 || isInvalidEdgeCaseThree(position,coordinate) || isInvalidEdgeCaseFour(position,coordinate));
     }
 
+    @Override
+    public List<Move> getPossibleMoves(final Board board) {
+        int destination;
+        List<Move> possibleMoves = new ArrayList<>();
+        for (int move: possible_moves) {
+            destination = this.position + move;
+            if(BoardFuntions.isValidCoordinate(move)){
+
+                if(!isInvalidEdge(this.position, move)){
+                    Field destinationField = board.getField(destination);
+                    if(!destinationField.isOccupied()){
+                        possibleMoves.add(new Move.EmptyMove(board,this, destination ));
+                    }
+                    else{
+                        Piece pieceAtDestination = destinationField.getPiece();
+                        if(this.getTeam() != pieceAtDestination.getTeam()){
+                            possibleMoves.add(new Move.AttackMove(board, this, destination, pieceAtDestination));
+                        }
+                    }
+                }
+            }
+        }
+        return ImmutableList.copyOf(possibleMoves);
+    }
 
 }

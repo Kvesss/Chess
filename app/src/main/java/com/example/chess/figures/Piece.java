@@ -6,10 +6,11 @@ import com.example.chess.Move;
 
 import java.util.List;
 
-public abstract class Piece {   //Abstraction of a figure
+public abstract class Piece {
 
     protected final int position;
     protected final Team team;
+
 
     public Piece(final int position,final Team team) {
         this.position = position;
