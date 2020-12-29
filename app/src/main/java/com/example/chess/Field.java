@@ -20,11 +20,11 @@ public abstract class Field {
         return ImmutableMap.copyOf(emptyFieldMap);
     }
 
-    public static Field createChecker(final int coordinate, final Piece piece){
+    public static Field createField(final int coordinate, final Piece piece){
         if(piece == null){
             return new EmptyField(coordinate);
         }
-        return new OccupiedField(coordinate, piece);
+        return new EmptyField.OccupiedField(coordinate, piece);
     }
 
     protected final int coordinate;
@@ -49,29 +49,29 @@ public abstract class Field {
 
         @Override
         public Piece getPiece() {
-            return null;        //Empty Checker
-        }
+            return null;
 
 
-
-    }
-    public static final class OccupiedField extends Field {
-        private final Piece piece;
-
-        private OccupiedField(final int coordinate, final Piece piece) {
-            super(coordinate);
-            this.piece = piece;
-        }
-
-        @Override
-        public boolean isOccupied() {
-            return true;
-        }
-
-        @Override
-        public Piece getPiece() {
-            return this.piece;
         }
     }
 
-}
+        public static final class OccupiedField extends Field {
+            private final Piece piece;
+
+            private OccupiedField(final int coordinate, final Piece piece) {
+                super(coordinate);
+                this.piece = piece;
+            }
+
+            @Override
+            public boolean isOccupied() {
+                return true;
+            }
+
+            @Override
+            public Piece getPiece() {
+                return this.piece;
+            }
+        }
+    }
+
