@@ -15,7 +15,7 @@ public class Pawn extends Piece{
     private final boolean isFirstMove;
 
     public Pawn(int position, Team team) {
-        super(position, team);
+        super(position, team, Type.PAWN);
         isFirstMove = true;
     }
 
@@ -24,7 +24,7 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public List<Move> getPossibleMoves(Board board) {
+    public List<Move> getPossibleMoves(final Board board) {
         List<Move> possibleMoves = new ArrayList<>();
         for (int coefficient : possible_moves_coefficients) {
             int tempCoordinate = this.position + (coefficient * this.getTeam().getDirection());

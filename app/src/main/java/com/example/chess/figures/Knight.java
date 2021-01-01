@@ -15,7 +15,7 @@ public class Knight extends Piece {
     private final static int[] possible_moves = { -17, -15, -10, -6, 6, 10, 15, 17};
 
     public Knight(int position, Team team) {
-        super(position, team);
+        super(position, team, Type.KNIGHT);
     }
 
     private static boolean isInvalidEdgeCaseOne(int position, int coordinate){

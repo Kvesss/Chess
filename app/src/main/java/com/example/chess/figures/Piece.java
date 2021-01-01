@@ -8,15 +8,20 @@ import java.util.List;
 
 public abstract class Piece {
 
+    protected final Type type;
     protected final int position;
     protected final Team team;
 
 
-    public Piece(final int position,final Team team) {
+    public Piece(final int position,final Team team, Type type) {
         this.position = position;
         this.team = team;
+        this.type = type;
     }
 
+    public Type getType() {
+        return type;
+    }
     public int getPosition() {
         return position;
     }
@@ -25,4 +30,14 @@ public abstract class Piece {
     }
 
     public abstract List<Move> getPossibleMoves(final Board board);
+
+    public enum Type{
+
+        KING,
+        QUEEN,
+        ROOK,
+        BISHOP,
+        KNIGHT,
+        PAWN
+    }
 }

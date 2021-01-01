@@ -8,7 +8,7 @@ public abstract class Move {
     private final Piece pieceMoved;
     private final int destination;
 
-    public Move(Board board, Piece pieceMoved, int destination) {
+    public Move(final Board board,final Piece pieceMoved,final int destination) {
         this.board = board;
         this.pieceMoved = pieceMoved;
         this.destination = destination;
@@ -24,20 +24,32 @@ public abstract class Move {
         return destination;
     }
 
+    public abstract Board execute();            //TODO TODO TODO
+
     public static final class AttackMove extends Move{
 
         Piece occupiedPiece;
 
-        public AttackMove(Board board, Piece pieceMoved, int destination, Piece occupiedPiece) {
+        public AttackMove(final Board board,final Piece pieceMoved, int destination,final Piece occupiedPiece) {
             super(board, pieceMoved, destination);
             this.occupiedPiece = occupiedPiece;
+        }
+
+        @Override
+        public Board execute() {
+            return null;
         }
     }
 
     public static final class EmptyMove extends Move{
 
-        public EmptyMove(Board board, Piece pieceMoved, int destination) {
+        public EmptyMove(final Board board,final Piece pieceMoved,final int destination) {
             super(board, pieceMoved, destination);
+        }
+
+        @Override
+        public Board execute() {
+            return null;
         }
     }
 

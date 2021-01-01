@@ -7,9 +7,13 @@ import com.example.chess.figures.Pawn;
 import com.example.chess.figures.Piece;
 import com.example.chess.figures.Queen;
 import com.example.chess.figures.Rook;
+import com.example.chess.player.BlackPlayer;
+import com.example.chess.player.Player;
+import com.example.chess.player.WhitePlayer;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,17 +24,56 @@ public class Board {
     private final List<Piece> blackTeam;
     private final List<Move> possibleWhiteMoves;
     private final List<Move> possibleBlackMoves;
+    private final Player blackPlayer;
+    private final Player whitePlayer;
+    private final Player currentPlayer;
 
 
-    private Board(BoardBuilder board) {
-        this.board = createBoard(board);
-        whiteTeam = extractTeam(Team.WHITE);
-        blackTeam = extractTeam(Team.BLACK);
-        possibleWhiteMoves = getPossibleMoves(whiteTeam);
-        possibleBlackMoves = getPossibleMoves(blackTeam);
+
+    public List<Field> getBoard() {
+        return board;
     }
 
-    private List<Piece> extractTeam(Team team) {
+    public List<Piece> getWhiteTeam() {
+        return whiteTeam;
+    }
+
+    public List<Piece> getBlackTeam() {
+        return blackTeam;
+    }
+
+    public List<Move> getPossibleWhiteMoves() {
+        return possibleWhiteMoves;
+    }
+
+    public List<Move> getPossibleBlackMoves() {
+        return possibleBlackMoves;
+    }
+
+    public Field getField(final int position){
+        return board.get(position);
+    }
+
+    public Player getBlackPlayer() { return blackPlayer; }
+
+    public Player getWhitePlayer() { return whitePlayer; }
+
+    public Player getCurrentPlayer() { return currentPlayer; }
+
+
+    private Board(final BoardBuilder board) {
+        this.board = createBoard(board);
+        this.whiteTeam = extractTeam(Team.WHITE);
+        this.blackTeam = extractTeam(Team.BLACK);
+        this.possibleWhiteMoves = getPossibleMoves(whiteTeam);
+        this.possibleBlackMoves = getPossibleMoves(blackTeam);
+
+        this.blackPlayer = new BlackPlayer(this, possibleWhiteMoves, possibleBlackMoves);
+        this.whitePlayer = new WhitePlayer(this, possibleWhiteMoves, possibleBlackMoves);
+        currentPlayer = board.nextMove.choosePlayer(this.whitePlayer, this.blackPlayer);
+    }
+
+    public List<Piece> extractTeam(Team team) {
             List<Piece> chessTeam = new ArrayList<>();
             for (Field field:board) {
                 if(field.isOccupied()){
@@ -51,35 +94,8 @@ public class Board {
         return ImmutableList.copyOf(allPossibleMoves);
     }
 
-//    private List<Piece> extractBlackTeam() {
-//        List<Piece> blackTeam = new ArrayList<>();
-//        for (Field field:board) {
-//            if(field.isOccupied()){
-//                if(field.getPiece().getTeam() == Team.BLACK){
-//                    blackTeam.add(field.getPiece());
-//                }
-//            }
-//        }
-//        return ImmutableList.copyOf(blackTeam);
-//    }
-//
-//    private List<Piece> extractWhiteTeam() {
-//        List<Piece> whiteTeam = new ArrayList<>();
-//        for (Field field:board) {
-//            if(field.isOccupied()){
-//                if(field.getPiece().getTeam() == Team.WHITE){
-//                    whiteTeam.add(field.getPiece());
-//                }
-//            }
-//        }
-//        return ImmutableList.copyOf(whiteTeam);
-//    }
 
-    public Field getField(int position){
-        return board.get(position);
-    }
-
-    private static List<Field> createBoard(BoardBuilder boardBuilder) {
+    public static List<Field> createBoard(BoardBuilder boardBuilder) {
         List<Field> chessField = new ArrayList<>(64);
         for (int i=0; i< 64; i++) {
             chessField.set(i, Field.createField(i, boardBuilder.boardBlueprint.get(i)));
@@ -88,7 +104,7 @@ public class Board {
         return ImmutableList.copyOf(chessField);
     }
 
-    private static Board initiateOpeningBoard(){
+    public static Board initiateOpeningBoard(){
         BoardBuilder builder = new BoardBuilder();
         builder.setPiece(new Rook(0, Team.BLACK));
         builder.setPiece(new Knight(1, Team.BLACK));
@@ -130,18 +146,14 @@ public class Board {
     }
 
 
-
     private static class BoardBuilder{
         private Map<Integer, Piece> boardBlueprint;
         private Team nextMove;
 
         public BoardBuilder() {
+            this.boardBlueprint = new HashMap<>();
         }
 
-//        public BoardBuilder(Map<Integer, Piece> boardBlueprint, Team nextMove) {
-//            this.boardBlueprint = boardBlueprint;
-//            this.nextMove = nextMove;
-//        }
 
 
         public BoardBuilder setNextMove(Team nextMove) {
@@ -157,8 +169,6 @@ public class Board {
         public Board build(){
             return new Board(this);
         }
-
-
 
     }
 

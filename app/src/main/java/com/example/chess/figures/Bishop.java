@@ -15,7 +15,7 @@ public class Bishop extends Piece{
     private final static int[] possible_moves_coefficients = { -9, -7, 7, 9};
 
     public Bishop(int position, Team team) {
-        super(position, team);
+        super(position, team, Type.BISHOP);
     }
 
     private static boolean isInvalidEdgeCaseOne(int position, int coordinate){

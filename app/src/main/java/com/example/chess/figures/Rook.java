@@ -15,7 +15,7 @@ public class Rook extends Piece {
     private final static int[] possible_moves_coefficients = { -8, -1, 1, 8};
 
     public Rook(int position, Team team) {
-        super(position, team);
+        super(position, team, Type.ROOK);
     }
 
     private static boolean isInvalidEdgeCaseOne(int position, int coordinate){

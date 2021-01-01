@@ -15,7 +15,7 @@ public class Queen extends Piece{
     private final static int[] possible_moves_coefficients = { -9, -8, -7, -1, 1, 7, 8, 9};
 
     public Queen(int position, Team team) {
-        super(position, team);
+        super(position, team, Type.QUEEN);
     }
 
 
