@@ -33,33 +33,30 @@ public class Board {
     public List<Field> getBoard() {
         return board;
     }
-
     public List<Piece> getWhiteTeam() {
         return whiteTeam;
     }
-
     public List<Piece> getBlackTeam() {
         return blackTeam;
     }
-
     public List<Move> getPossibleWhiteMoves() {
         return possibleWhiteMoves;
     }
-
     public List<Move> getPossibleBlackMoves() {
         return possibleBlackMoves;
     }
-
     public Field getField(final int position){
         return board.get(position);
     }
-
-    public Player getBlackPlayer() { return blackPlayer; }
-
-    public Player getWhitePlayer() { return whitePlayer; }
-
-    public Player getCurrentPlayer() { return currentPlayer; }
-
+    public Player getBlackPlayer() {
+        return blackPlayer;
+    }
+    public Player getWhitePlayer() {
+        return whitePlayer;
+    }
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 
     private Board(final BoardBuilder board) {
         this.board = createBoard(board);
@@ -85,7 +82,6 @@ public class Board {
             return ImmutableList.copyOf(chessTeam);
         }
 
-
     private List<Move> getPossibleMoves(List<Piece> team) {
         List<Move> allPossibleMoves = new ArrayList<>();
         for (Piece piece : team) {
@@ -93,7 +89,6 @@ public class Board {
         }
         return ImmutableList.copyOf(allPossibleMoves);
     }
-
 
     public static List<Field> createBoard(BoardBuilder boardBuilder) {
         List<Field> chessField = new ArrayList<>(64);
@@ -154,8 +149,6 @@ public class Board {
             this.boardBlueprint = new HashMap<>();
         }
 
-
-
         public BoardBuilder setNextMove(Team nextMove) {
             this.nextMove = nextMove;
             return this;
@@ -169,8 +162,6 @@ public class Board {
         public Board build(){
             return new Board(this);
         }
-
     }
-
 
 }

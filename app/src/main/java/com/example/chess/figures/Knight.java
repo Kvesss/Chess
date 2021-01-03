@@ -1,5 +1,7 @@
 package com.example.chess.figures;
 
+import com.example.chess.GetMovesStrategy.GetPossibleKnightMoves;
+import com.example.chess.GetMovesStrategy.IGetPossibleMovesStrategy;
 import com.example.chess.Team;
 import com.example.chess.Board;
 import com.example.chess.BoardFuntions;
@@ -12,10 +14,12 @@ import java.util.List;
 
 public class Knight extends Piece {
 
-    private final static int[] possible_moves = { -17, -15, -10, -6, 6, 10, 15, 17};
+    private IGetPossibleMovesStrategy getPossibleMovesStrategy;
+    private final static int[] possible_moves_coefficients = { -17, -15, -10, -6, 6, 10, 15, 17};
 
     public Knight(int position, Team team) {
         super(position, team, Type.KNIGHT);
+        this.getPossibleMovesStrategy = new GetPossibleKnightMoves();
     }
 
     private static boolean isInvalidEdgeCaseOne(int position, int coordinate){
@@ -32,35 +36,18 @@ public class Knight extends Piece {
         return BoardFuntions.COLUMN_EIGHT[position] && ((coordinate == -15) || (coordinate == -6)
                 || (coordinate == 10) || (coordinate == 17));
     }
-
-    private static boolean isInvalidEdge(int position, int coordinate){
+    public static boolean isInvalidEdge(int position, int coordinate){
         return (isInvalidEdgeCaseOne(position,coordinate) || isInvalidEdgeCaseTwo(position,coordinate)
                 || isInvalidEdgeCaseThree(position,coordinate) || isInvalidEdgeCaseFour(position,coordinate));
     }
 
     @Override
     public List<Move> getPossibleMoves(final Board board) {
-        int destination;
-        List<Move> possibleMoves = new ArrayList<>();
-        for (int move: possible_moves) {
-            destination = this.position + move;
-            if(BoardFuntions.isValidCoordinate(move)){
+        return getPossibleMovesStrategy.getPossibleMoves(board, this);
+    }
 
-                if(!isInvalidEdge(this.position, move)){
-                    Field destinationField = board.getField(destination);
-                    if(!destinationField.isOccupied()){
-                        possibleMoves.add(new Move.EmptyMove(board,this, destination ));
-                    }
-                    else{
-                        Piece pieceAtDestination = destinationField.getPiece();
-                        if(this.getTeam() != pieceAtDestination.getTeam()){
-                            possibleMoves.add(new Move.AttackMove(board, this, destination, pieceAtDestination));
-                        }
-                    }
-                }
-            }
-        }
-        return ImmutableList.copyOf(possibleMoves);
+    public static int[] getPossible_moves_coefficients() {
+        return possible_moves_coefficients;
     }
 
 }

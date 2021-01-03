@@ -1,5 +1,6 @@
 package com.example.chess.figures;
 
+import com.example.chess.GetMovesStrategy.IGetPossibleMovesStrategy;
 import com.example.chess.Team;
 import com.example.chess.Board;
 import com.example.chess.Move;
@@ -11,12 +12,13 @@ public abstract class Piece {
     protected final Type type;
     protected final int position;
     protected final Team team;
-
+    protected final boolean isFirstMove;
 
     public Piece(final int position,final Team team, Type type) {
         this.position = position;
         this.team = team;
         this.type = type;
+        isFirstMove = true;
     }
 
     public Type getType() {
@@ -28,7 +30,9 @@ public abstract class Piece {
     public Team getTeam() {
         return team;
     }
-
+    public boolean isFirstMove() {
+        return this.isFirstMove;
+    }
     public abstract List<Move> getPossibleMoves(final Board board);
 
     public enum Type{

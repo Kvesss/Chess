@@ -9,6 +9,7 @@ import com.example.chess.figures.Piece;
 
 public abstract class Field {
 
+    protected final int coordinate;
     private static final Map<Integer, EmptyField> EMPTY_FIELD_MAP = createAllPossibleEmptyFields();
 
     private static Map<Integer, EmptyField> createAllPossibleEmptyFields() {    //Immutable
@@ -27,14 +28,11 @@ public abstract class Field {
         return new EmptyField.OccupiedField(coordinate, piece);
     }
 
-    protected final int coordinate;
-
     private Field(int coordinate){
         this.coordinate = coordinate;
     }
 
     public abstract boolean isOccupied();
-
     public abstract Piece getPiece();
 
     public static final class EmptyField extends Field {
@@ -50,8 +48,6 @@ public abstract class Field {
         @Override
         public Piece getPiece() {
             return null;
-
-
         }
     }
 

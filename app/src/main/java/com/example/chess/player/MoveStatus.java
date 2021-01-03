@@ -5,6 +5,4 @@ public enum MoveStatus {
     DONE,
     ILLEGAL,
     CHECK
-
-
 }

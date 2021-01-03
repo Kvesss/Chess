@@ -17,14 +17,12 @@
                 values[i] = false;
             }
         }
-
         return values;
     }
 
     private BoardFuntions() {
         throw new RuntimeException("Cannot be instantiated");
     }
-
 
     public static boolean isValidCoordinate(int coordinate) {
         return(coordinate >= NUMBER_OF_FIELDS ||  coordinate < 0);

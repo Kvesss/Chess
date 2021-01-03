@@ -54,11 +54,11 @@ public abstract class Player {
         return this.possibleMoves.isEmpty() && !isCheck();
     }
 
-
     public MoveExecution initiateMove(final Move move){
         if(isMoveLegal(move)){
             Board boardExecution = move.execute();
-            List<Move> checks = Player.getAttacksOnPosition((boardExecution.getCurrentPlayer().getOpponent().getPlayerKing().getPosition()),boardExecution.getCurrentPlayer().getPossibleMoves());
+            List<Move> checks = Player.getAttacksOnPosition((boardExecution.getCurrentPlayer().getOpponent().getPlayerKing().getPosition()),
+                    boardExecution.getCurrentPlayer().getPossibleMoves());
             if(checks.isEmpty()){
                 return new MoveExecution(this.board, move, MoveStatus.CHECK);
             }
@@ -93,6 +93,5 @@ public abstract class Player {
     public abstract List<Piece> getRemainingPieces();
     public abstract Team getTeam();
     public abstract Player getOpponent();
-
 
 }

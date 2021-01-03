@@ -18,11 +18,9 @@ public class MoveExecution {
     public Board getTransitionBoard() {
         return transitionBoard;
     }
-
     public Move getMove() {
         return move;
     }
-
     public MoveStatus getStatus() {
         return status;
     }

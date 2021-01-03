@@ -9,7 +9,6 @@ import java.util.List;
 
 public class BlackPlayer extends Player {
 
-
     public BlackPlayer(final Board board,final List<Move> possibleWhiteMoves,final List<Move> possibleBlackMoves) {
         super(board, possibleWhiteMoves, possibleBlackMoves);
     }
