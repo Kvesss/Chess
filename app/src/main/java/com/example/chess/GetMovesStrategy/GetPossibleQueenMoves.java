@@ -5,28 +5,42 @@ import com.example.chess.BoardFuntions;
 import com.example.chess.Field;
 import com.example.chess.Move;
 import com.example.chess.figures.Piece;
-import com.example.chess.figures.Queen;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetPossibleQueenMoves implements IGetPossibleMovesStrategy {
+
+    private final static int[] possible_moves_coefficients = { -9, -8, -7, -1, 1, 7, 8, 9};
+
+    private static boolean isInvalidEdgeCaseOne(int position, int coordinate){
+        return BoardFuntions.COLUMN_ONE[position] && ((coordinate == -9) || (coordinate == 7) || (coordinate == -1));
+    }
+
+    private static boolean isInvalidEdgeCaseEight(int position, int coordinate){
+        return BoardFuntions.COLUMN_EIGHT[position] && ((coordinate == -7) || (coordinate == 9) || (coordinate == 1));
+    }
+
+    private static boolean isInvalidEdge(int position, int coordinate){
+        return isInvalidEdgeCaseOne(position,coordinate) || isInvalidEdgeCaseEight(position, coordinate);
+    }
+
     @Override
-    public List<Move> getPossibleMoves(Board board, Piece piece) {
+    public List<Move> getPossibleMoves(final Board board,final Piece piece) {
         List<Move> possibleMoves = new ArrayList<>();
-        for (int coefficient : Queen.getPossible_moves_coefficients()) {
+        for (final int coefficient : possible_moves_coefficients) {
             int tempCoordinate = piece.getPosition();
             while(BoardFuntions.isValidCoordinate(tempCoordinate)){
-                if(!Queen.isInvalidEdge(tempCoordinate, coefficient))
+                if(!isInvalidEdge(tempCoordinate, coefficient))
                     tempCoordinate += coefficient;
                 if(BoardFuntions.isValidCoordinate(tempCoordinate)){
-                    Field destinationField = board.getField(tempCoordinate);
+                    final Field destinationField = board.getField(tempCoordinate);
                     if(!destinationField.isOccupied()){
                         possibleMoves.add(new Move.EmptyMove(board, piece, tempCoordinate));
                     }
                     else {
-                        Piece pieceAtDestination = destinationField.getPiece();
+                        final Piece pieceAtDestination = destinationField.getPiece();
                         if(piece.getTeam()!=pieceAtDestination.getTeam()){
                             possibleMoves.add(new Move.AttackMove(board, piece, tempCoordinate, pieceAtDestination));
                         }

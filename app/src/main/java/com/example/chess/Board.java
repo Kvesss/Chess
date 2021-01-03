@@ -70,7 +70,7 @@ public class Board {
         currentPlayer = board.nextMove.choosePlayer(this.whitePlayer, this.blackPlayer);
     }
 
-    public List<Piece> extractTeam(Team team) {
+    public List<Piece> extractTeam(final Team team) {
             List<Piece> chessTeam = new ArrayList<>();
             for (Field field:board) {
                 if(field.isOccupied()){
@@ -82,7 +82,7 @@ public class Board {
             return ImmutableList.copyOf(chessTeam);
         }
 
-    private List<Move> getPossibleMoves(List<Piece> team) {
+    private List<Move> getPossibleMoves(final List<Piece> team) {
         List<Move> allPossibleMoves = new ArrayList<>();
         for (Piece piece : team) {
             allPossibleMoves.addAll(piece.getPossibleMoves(this));

@@ -7,7 +7,7 @@
     public static final boolean[] COLUMN_EIGHT = createColumn(7);
     public static final int NUMBER_OF_FIELDS = 64;
 
-    private static boolean[] createColumn(int column) {
+    private static boolean[] createColumn(final int column) {
         final boolean[] values = new boolean[NUMBER_OF_FIELDS];
         for(int i = 0; i<NUMBER_OF_FIELDS; i++){
             if(i%8==column){
@@ -24,7 +24,7 @@
         throw new RuntimeException("Cannot be instantiated");
     }
 
-    public static boolean isValidCoordinate(int coordinate) {
+    public static boolean isValidCoordinate(final int coordinate) {
         return(coordinate >= NUMBER_OF_FIELDS ||  coordinate < 0);
         }
 }

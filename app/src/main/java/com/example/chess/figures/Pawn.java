@@ -14,9 +14,8 @@ import java.util.List;
 public class Pawn extends Piece{
 
     private IGetPossibleMovesStrategy getPossibleMovesStrategy;
-    private final static int[] possible_moves_coefficients = {7, 8, 9, 16};
 
-    public Pawn(int position, Team team) {
+    public Pawn(final int position,final Team team) {
         super(position, team, Type.PAWN);
         this.getPossibleMovesStrategy = new GetPossiblePawnMoves();
     }
@@ -26,7 +25,4 @@ public class Pawn extends Piece{
         return this.getPossibleMovesStrategy.getPossibleMoves(board, this);
     }
 
-    public static int[] getPossible_moves_coefficients() {
-        return possible_moves_coefficients;
-    }
 }

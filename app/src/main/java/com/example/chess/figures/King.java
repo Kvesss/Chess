@@ -15,29 +15,15 @@ import java.util.List;
 public class King extends Piece{
 
     private IGetPossibleMovesStrategy getPossibleMovesStrategy;
-    private final static int[] possible_moves_coefficients = { -9, -8, -7, -1, 1, 7, 8, 9};
 
-    public King(int position, Team team) {
+    public King(final int position,final Team team) {
         super(position, team, Type.KING);
         this.getPossibleMovesStrategy = new GetPossibleKingMoves();
     }
 
-    private static boolean isInvalidEdgeCaseOne(int position, int coordinate){
-        return BoardFuntions.COLUMN_ONE[position] && ((coordinate == -9) || (coordinate == 7) || (coordinate == -1));
-    }
-    private static boolean isInvalidEdgeCaseEight(int position, int coordinate){
-        return BoardFuntions.COLUMN_EIGHT[position] && ((coordinate == -7) || (coordinate == 9) || (coordinate == 1));
-    }
-    public static boolean isInvalidEdge(int position, int coordinate){
-        return isInvalidEdgeCaseOne(position,coordinate) || isInvalidEdgeCaseEight(position, coordinate);
-    }
-
     @Override
-    public List<Move> getPossibleMoves(Board board) {
+    public List<Move> getPossibleMoves(final Board board) {
         return getPossibleMovesStrategy.getPossibleMoves(board, this);
     }
 
-    public static int[] getPossible_moves_coefficients() {
-        return possible_moves_coefficients;
-    }
 }

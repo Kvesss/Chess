@@ -9,7 +9,7 @@ public class MoveExecution {
     private final Move move;
     private final MoveStatus status;
 
-    public MoveExecution(Board transitionBoard, Move move, MoveStatus status) {
+    public MoveExecution(final Board transitionBoard,final Move move,final MoveStatus status) {
         this.transitionBoard = transitionBoard;
         this.move = move;
         this.status = status;

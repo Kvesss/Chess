@@ -4,8 +4,6 @@ import com.example.chess.Board;
 import com.example.chess.BoardFuntions;
 import com.example.chess.Field;
 import com.example.chess.Move;
-import com.example.chess.figures.Bishop;
-import com.example.chess.figures.Knight;
 import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;
 
@@ -13,16 +11,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetPossibleBishopMoves implements IGetPossibleMovesStrategy {
+
+    private final static int[] possible_moves_coefficients = { -9, -7, 7, 9};
+
+    private static boolean isInvalidEdgeCaseOne(int position, int coordinate){
+        return BoardFuntions.COLUMN_ONE[position] && ((coordinate == -9) || (coordinate == 7));
+    }
+
+    private static boolean isInvalidEdgeCaseEight(int position, int coordinate){
+        return BoardFuntions.COLUMN_EIGHT[position] && ((coordinate == -7) || (coordinate == 9));
+    }
+
+    private static boolean isInvalidEdge(int position, int coordinate){
+        return isInvalidEdgeCaseOne(position,coordinate) || isInvalidEdgeCaseEight(position, coordinate);
+    }
+
     @Override
-    public List<Move> getPossibleMoves(Board board, Piece piece) {
+    public List<Move> getPossibleMoves(final Board board,final Piece piece) {
         List<Move> possibleMoves = new ArrayList<>();
-        for (int coefficient: Bishop.getPossible_moves_coefficients()) {
+        for (final int coefficient: possible_moves_coefficients) {
             int tempCoordinate = piece.getPosition();
             while(BoardFuntions.isValidCoordinate(tempCoordinate)){
-                if (!Bishop.isInvalidEdge(tempCoordinate, coefficient)) {
+                if (!isInvalidEdge(tempCoordinate, coefficient)) {
                     tempCoordinate += coefficient;
                     if (BoardFuntions.isValidCoordinate(tempCoordinate)) {
-                        Field destinationField = board.getField(tempCoordinate);
+                        final Field destinationField = board.getField(tempCoordinate);
                         if (!destinationField.isOccupied()) {
                             possibleMoves.add(new Move.EmptyMove(board, piece, tempCoordinate));
                         } else {

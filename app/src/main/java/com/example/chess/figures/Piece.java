@@ -14,7 +14,7 @@ public abstract class Piece {
     protected final Team team;
     protected final boolean isFirstMove;
 
-    public Piece(final int position,final Team team, Type type) {
+    public Piece(final int position,final Team team,final Type type) {
         this.position = position;
         this.team = team;
         this.type = type;

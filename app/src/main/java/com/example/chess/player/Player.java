@@ -31,7 +31,7 @@ public abstract class Player {
         return this.possibleMoves;
     }
 
-    private static List<Move> getAttacksOnPosition(int position ,final List<Move> moves){
+    private static List<Move> getAttacksOnPosition(final int position ,final List<Move> moves){
         List<Move> possibleMoves = new ArrayList<>();
         for (Move move : moves) {
             if(move.getDestination() == position){

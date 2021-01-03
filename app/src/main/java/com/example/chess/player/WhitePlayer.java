@@ -8,6 +8,7 @@ import com.example.chess.figures.Piece;
 import java.util.List;
 
 public class WhitePlayer extends Player {
+
     public WhitePlayer(final Board board,final List<Move> possibleWhiteMoves,final List<Move> possibleBlackMoves) {
         super(board, possibleWhiteMoves, possibleBlackMoves);
     }

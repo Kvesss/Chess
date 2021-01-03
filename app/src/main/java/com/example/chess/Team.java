@@ -10,7 +10,7 @@ public enum Team {
         }
 
         @Override
-        public Player choosePlayer(Player whitePlayer, Player blackPlayer) {
+        public Player choosePlayer(final Player whitePlayer,final Player blackPlayer) {
             return whitePlayer;
         }
     },
@@ -21,7 +21,7 @@ public enum Team {
         }
 
         @Override
-        public Player choosePlayer(Player whitePlayer, Player blackPlayer) {
+        public Player choosePlayer(final Player whitePlayer,final Player blackPlayer) {
             return blackPlayer;
         }
     };

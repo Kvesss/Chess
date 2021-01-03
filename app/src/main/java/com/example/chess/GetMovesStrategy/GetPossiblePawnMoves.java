@@ -4,7 +4,6 @@ import com.example.chess.Board;
 import com.example.chess.BoardFuntions;
 import com.example.chess.Move;
 import com.example.chess.Team;
-import com.example.chess.figures.Pawn;
 import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;
 
@@ -12,10 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetPossiblePawnMoves implements IGetPossibleMovesStrategy {
+
+    private final static int[] possible_moves_coefficients = {7, 8, 9, 16};
+
     @Override
-    public List<Move> getPossibleMoves(Board board, Piece piece) {
+    public List<Move> getPossibleMoves(final Board board,final Piece piece) {
         List<Move> possibleMoves = new ArrayList<>();
-        for (int coefficient : Pawn.getPossible_moves_coefficients()) {
+        for (final int coefficient : possible_moves_coefficients) {
             int tempCoordinate = piece.getPosition() + (coefficient * piece.getTeam().getDirection());
             if(BoardFuntions.isValidCoordinate(tempCoordinate)){
                 if(coefficient == 8 && !board.getField(tempCoordinate).isOccupied()){
