@@ -1,4 +1,4 @@
-package com.example.chess;
+package com.example.chess.Board;
 
 import com.example.chess.player.Player;
 
@@ -17,7 +17,7 @@ public enum Team {
     BLACK {
         @Override
         public int getDirection() {
-            return -1;
+            return 1;
         }
 
         @Override
@@ -28,6 +28,6 @@ public enum Team {
 
     public abstract int getDirection();
 
-    public abstract Player choosePlayer(Player whitePlayer, Player blackPlayer);
+    public abstract Player choosePlayer(final Player whitePlayer,final Player blackPlayer);
 }
 

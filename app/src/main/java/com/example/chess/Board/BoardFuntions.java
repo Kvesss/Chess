@@ -1,4 +1,4 @@
- package com.example.chess;
+ package com.example.chess.Board;
 
  public class BoardFuntions {
     public static final boolean[] COLUMN_ONE = createColumn(0);

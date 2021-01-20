@@ -5,22 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class OpenActivity extends AppCompatActivity {
 
-    private EditText etPlayerOne;
-    private EditText etPlayertwo;
-
+    private Button play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_fragment);
+        setContentView(R.layout.activity_open);
+
     }
 
-    public void onStartClick(View v){
-        Intent intent = new Intent(MainActivity.this, ChessBoard.class);
+    public void onPlayClick(View v){
+        Intent intent = new Intent(OpenActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

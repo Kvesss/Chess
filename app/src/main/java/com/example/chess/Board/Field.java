@@ -1,4 +1,4 @@
-package com.example.chess;
+package com.example.chess.Board;
 
 import com.google.common.collect.ImmutableMap;
 

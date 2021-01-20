@@ -1,9 +1,8 @@
 package com.example.chess.figures;
 
-import com.example.chess.GetMovesStrategy.IGetPossibleMovesStrategy;
-import com.example.chess.Team;
-import com.example.chess.Board;
-import com.example.chess.Move;
+import com.example.chess.Board.Team;
+import com.example.chess.Board.Board;
+import com.example.chess.Board.Move;
 
 import java.util.List;
 

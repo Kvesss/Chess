@@ -1,9 +1,9 @@
 package com.example.chess.GetMovesStrategy;
 
-import com.example.chess.Board;
-import com.example.chess.BoardFuntions;
-import com.example.chess.Field;
-import com.example.chess.Move;
+import com.example.chess.Board.Board;
+import com.example.chess.Board.BoardFuntions;
+import com.example.chess.Board.Field;
+import com.example.chess.Board.Move;
 import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;
 
@@ -46,12 +46,12 @@ public class GetPossibleKnightMoves implements IGetPossibleMovesStrategy {
                 if(!isInvalidEdge(piece.getPosition(), coefficient)){
                     final Field destinationField = board.getField(destination);
                     if(!destinationField.isOccupied()){
-                        possibleMoves.add(new Move.EmptyMove(board,piece, destination ));
+                        possibleMoves.add(new Move.NonAttackingMove(board,piece, destination ));
                     }
                     else{
                         Piece pieceAtDestination = destinationField.getPiece();
                         if(piece.getTeam() != pieceAtDestination.getTeam()){
-                            possibleMoves.add(new Move.AttackMove(board, piece, destination, pieceAtDestination));
+                            possibleMoves.add(new Move.AttackingMove(board, piece, destination, pieceAtDestination));
                         }
                     }
                 }

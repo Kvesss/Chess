@@ -1,15 +1,11 @@
 package com.example.chess.figures;
 
-import com.example.chess.BoardFuntions;
-import com.example.chess.Field;
 import com.example.chess.GetMovesStrategy.GetPossibleRookMoves;
 import com.example.chess.GetMovesStrategy.IGetPossibleMovesStrategy;
-import com.example.chess.Team;
-import com.example.chess.Board;
-import com.example.chess.Move;
-import com.google.common.collect.ImmutableList;
+import com.example.chess.Board.Team;
+import com.example.chess.Board.Board;
+import com.example.chess.Board.Move;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Rook extends Piece {

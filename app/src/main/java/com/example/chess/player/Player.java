@@ -1,9 +1,9 @@
 package com.example.chess.player;
 
 
-import com.example.chess.Board;
-import com.example.chess.Move;
-import com.example.chess.Team;
+import com.example.chess.Board.Board;
+import com.example.chess.Board.Move;
+import com.example.chess.Board.Team;
 import com.example.chess.figures.King;
 import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;

@@ -1,7 +1,7 @@
 package com.example.chess.player;
 
-import com.example.chess.Board;
-import com.example.chess.Move;
+import com.example.chess.Board.Board;
+import com.example.chess.Board.Move;
 
 public class MoveExecution {
 

@@ -1,4 +1,4 @@
-package com.example.chess;
+package com.example.chess.Board;
 
 import com.example.chess.figures.Bishop;
 import com.example.chess.figures.King;
@@ -67,7 +67,7 @@ public class Board {
 
         this.blackPlayer = new BlackPlayer(this, possibleWhiteMoves, possibleBlackMoves);
         this.whitePlayer = new WhitePlayer(this, possibleWhiteMoves, possibleBlackMoves);
-        currentPlayer = board.nextMove.choosePlayer(this.whitePlayer, this.blackPlayer);
+        this.currentPlayer = board.nextMove.choosePlayer(this.whitePlayer, this.blackPlayer);
     }
 
     public List<Piece> extractTeam(final Team team) {
@@ -141,7 +141,7 @@ public class Board {
     }
 
 
-    private static class BoardBuilder{
+    public static class BoardBuilder{
         private Map<Integer, Piece> boardBlueprint;
         private Team nextMove;
 

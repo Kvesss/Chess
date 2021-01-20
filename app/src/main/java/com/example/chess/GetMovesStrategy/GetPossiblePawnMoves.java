@@ -1,9 +1,9 @@
 package com.example.chess.GetMovesStrategy;
 
-import com.example.chess.Board;
-import com.example.chess.BoardFuntions;
-import com.example.chess.Move;
-import com.example.chess.Team;
+import com.example.chess.Board.Board;
+import com.example.chess.Board.BoardFuntions;
+import com.example.chess.Board.Move;
+import com.example.chess.Board.Team;
 import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;
 
@@ -21,7 +21,7 @@ public class GetPossiblePawnMoves implements IGetPossibleMovesStrategy {
             int tempCoordinate = piece.getPosition() + (coefficient * piece.getTeam().getDirection());
             if(BoardFuntions.isValidCoordinate(tempCoordinate)){
                 if(coefficient == 8 && !board.getField(tempCoordinate).isOccupied()){
-                    possibleMoves.add(new Move.EmptyMove(board, piece, tempCoordinate));
+                    possibleMoves.add(new Move.NonAttackingMove(board, piece, tempCoordinate));
                 }
                 else if (coefficient == 16 && piece.isFirstMove() &&
                         ((int)(piece.getPosition() /8) == 6 && piece.getTeam() == Team.WHITE) ||
@@ -30,7 +30,7 @@ public class GetPossiblePawnMoves implements IGetPossibleMovesStrategy {
                     if(!board.getField(doubleDestination).isOccupied() &&
                             !board.getField(tempCoordinate).isOccupied()){
 
-                        possibleMoves.add(new Move.EmptyMove(board, piece, tempCoordinate));
+                        possibleMoves.add(new Move.NonAttackingMove(board, piece, tempCoordinate));
                     }
 
                 }
@@ -41,7 +41,7 @@ public class GetPossiblePawnMoves implements IGetPossibleMovesStrategy {
                     {
                         final Piece attackedPiece = board.getField(tempCoordinate).getPiece();
                         if(piece.getTeam() != attackedPiece.getTeam()){
-                            possibleMoves.add(new Move.AttackMove(board, piece, tempCoordinate, attackedPiece));
+                            possibleMoves.add(new Move.AttackingMove(board, piece, tempCoordinate, attackedPiece));
                         }
                     }
                 }
@@ -53,7 +53,7 @@ public class GetPossiblePawnMoves implements IGetPossibleMovesStrategy {
                 {
                     final Piece attackedPiece = board.getField(tempCoordinate).getPiece();
                     if(piece.getTeam() != attackedPiece.getTeam()){
-                        possibleMoves.add(new Move.AttackMove(board, piece, tempCoordinate, attackedPiece));
+                        possibleMoves.add(new Move.AttackingMove(board, piece, tempCoordinate, attackedPiece));
                     }
                 }
             }
