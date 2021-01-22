@@ -2,7 +2,11 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="72dp">
+    android:layout_height="72dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:background="@drawable/curved">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,20 +16,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
             android:text="Player 1 Vs Player 2 "
             android:textSize="25dp"
             android:textStyle="italic"/>
 
         <TextView
+            android:id="@+id/tvGameWinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:text="Winner: Player 1"
             android:layout_below="@+id/tvMatchNames"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="50dp"
             android:textSize="20dp"
             android:textStyle="italic"/>
+
+        <ImageButton
+            android:id="@+id/btnRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:src="@android:drawable/ic_delete"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/Sienna"
+            android:onClick="removeName"/>
 
 
     </RelativeLayout>
