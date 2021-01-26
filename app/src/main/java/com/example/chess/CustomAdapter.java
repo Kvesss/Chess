@@ -13,13 +13,14 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHolder> {
 
-    private final List<String> gameList;
-    private final List<String> winnersList;
+//    private final List<String> gameList;
+//    private final List<String> winnersList;
+    private final List<Game> gameList;
     private final ButtonClickListener buttonClickListener;
 
-    public CustomAdapter(List<String> gameList, List<String> winnersList, ButtonClickListener buttonClickListener) {
+    public CustomAdapter(List<Game> gameList, ButtonClickListener buttonClickListener) {
         this.gameList = gameList;
-        this.winnersList = winnersList;
+        //this.winnersList = winnersList;
         this.buttonClickListener = buttonClickListener;
     }
 
@@ -33,7 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.NameViewHolder holder, int position) {
-        holder.setGame(gameList.get(position), winnersList.get(position));
+        holder.setGame(gameList.get(position).getPlayers(), gameList.get(position).getWinner());
     }
 
     @Override
@@ -41,16 +42,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
         return gameList.size();
     }
 
-    public void addNewGame(String players, String gameWinner){
-        gameList.add(players);
-        winnersList.add(gameWinner);
-        notifyItemInserted(gameList.size());
-    }
+//    public void addNewGame(String players, String gameWinner){
+//        gameList.add(players);
+//        winnersList.add(gameWinner);
+//        notifyItemInserted(gameList.size());
+//    }
 
     public void removeGame(int position){
         if(gameList.size() > position){
             gameList.remove(position);
-            winnersList.remove(position);
+//            winnersList.remove(position);
             notifyItemRemoved(position);
         }
     }

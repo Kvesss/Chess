@@ -8,6 +8,7 @@ import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class GetPossibleQueenMoves implements IGetPossibleMovesStrategy {
@@ -27,7 +28,7 @@ public class GetPossibleQueenMoves implements IGetPossibleMovesStrategy {
     }
 
     @Override
-    public List<Move> getPossibleMoves(final Board board,final Piece piece) {
+    public Collection<Move> getPossibleMoves(final Board board, final Piece piece) {
         List<Move> possibleMoves = new ArrayList<>();
         for (final int coefficient : possible_moves_coefficients) {
             int tempCoordinate = piece.getPosition();

@@ -7,8 +7,10 @@ import com.example.chess.Board.Team;
 import com.example.chess.figures.King;
 import com.example.chess.figures.Piece;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public abstract class Player {
@@ -20,9 +22,14 @@ public abstract class Player {
     public Player(final Board board, final List<Move> possibleMoves, final List<Move> enemyMoves){
         this.board = board;
         this.playerKing = initiateKing();
-        this.possibleMoves = possibleMoves;
+        this.possibleMoves = ImmutableList.copyOf(Iterables.concat(possibleMoves, getKingCastle(possibleMoves, enemyMoves)));
         this.isCheck = !Player.getAttacksOnPosition(this.playerKing.getPosition(), enemyMoves).isEmpty();
     }
+
+    public abstract Collection<Piece> getRemainingPieces();
+    public abstract Team getTeam();
+    public abstract Player getOpponent();
+    public abstract Collection<Move> getKingCastle(Collection<Move> currentMoves, Collection<Move> opponentMoves);
 
     public King getPlayerKing(){
         return this.playerKing;
@@ -31,7 +38,7 @@ public abstract class Player {
         return this.possibleMoves;
     }
 
-    private static List<Move> getAttacksOnPosition(final int position ,final List<Move> moves){
+    public static Collection<Move> getAttacksOnPosition(final int position ,final Collection<Move> moves){
         List<Move> possibleMoves = new ArrayList<>();
         for (Move move : moves) {
             if(move.getDestination() == position){
@@ -54,10 +61,14 @@ public abstract class Player {
         return this.possibleMoves.isEmpty() && !isCheck();
     }
 
+    public boolean hasCastled(){
+        return false;
+    }
+
     public MoveExecution initiateMove(final Move move){
         if(isMoveLegal(move)){
-            Board boardExecution = move.execute();
-            List<Move> checks = Player.getAttacksOnPosition((boardExecution.getCurrentPlayer().getOpponent().getPlayerKing().getPosition()),
+            Board boardExecution = move.executeMove();
+            Collection<Move> checks = Player.getAttacksOnPosition((boardExecution.getCurrentPlayer().getOpponent().getPlayerKing().getPosition()),
                     boardExecution.getCurrentPlayer().getPossibleMoves());
             if(checks.isEmpty()){
                 return new MoveExecution(this.board, move, MoveStatus.CHECK);
@@ -90,8 +101,6 @@ public abstract class Player {
         throw new RuntimeException("There is no King!");
     }
 
-    public abstract List<Piece> getRemainingPieces();
-    public abstract Team getTeam();
-    public abstract Player getOpponent();
+
 
 }

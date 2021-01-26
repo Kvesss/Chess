@@ -18,8 +18,9 @@ import java.util.List;
 public class GamesViewFragment extends Fragment implements ButtonClickListener {
 
     private RecyclerView recyclerView;
-    private List<String> gameList;
-    private List<String> winnersList;
+//    private List<String> gameList;
+//    private List<String> winnersList;
+    private List<Game> gameList;
     private CustomAdapter customAdapter;
 
 
@@ -49,19 +50,24 @@ public class GamesViewFragment extends Fragment implements ButtonClickListener {
         //TODO database
         gameList = new ArrayList<>();
 
-        gameList.add("Edgar Davids");
-        gameList.add("Hernan Crespo");
-        gameList.add("Andy Cole");
-        winnersList = new ArrayList<>();
-        winnersList.add("Edgar Davids");
-        winnersList.add("Hernan Crespo");
-        winnersList.add("Andy Cole");
+//        gameList.add("Edgar Davids");
+//        gameList.add("Hernan Crespo");
+//        gameList.add("Andy Cole");
+//        winnersList = new ArrayList<>();
+//        winnersList.add("Edgar Davids");
+//        winnersList.add("Hernan Crespo");
+//        winnersList.add("Andy Cole");
+        gameList.add(new Game("Carlsen Anand", "Carlsen"));
+        gameList.add(new Game("Carlsen Anand", "Carlsen"));
+        gameList.add(new Game("Carlsen Anand", "Carlsen"));
+
     }
 
     private void setupRecyclerView(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewGames);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        customAdapter = new CustomAdapter(gameList, winnersList, this);
+//        customAdapter = new CustomAdapter(gameList, winnersList, this);
+        customAdapter = new CustomAdapter(gameList, this);
         recyclerView.setAdapter(customAdapter);
     }
 }

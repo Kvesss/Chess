@@ -11,6 +11,7 @@ import com.example.chess.player.BlackPlayer;
 import com.example.chess.player.Player;
 import com.example.chess.player.WhitePlayer;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -138,6 +139,10 @@ public class Board {
         builder.setNextMove(Team.WHITE);
 
         return builder.build();
+    }
+
+    public Iterable<? extends Move> getAllPossibleMoves() {
+        return Iterables.unmodifiableIterable(Iterables.concat(getPossibleWhiteMoves(), getPossibleBlackMoves()));
     }
 
 

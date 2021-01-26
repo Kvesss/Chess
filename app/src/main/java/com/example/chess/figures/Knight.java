@@ -6,6 +6,7 @@ import com.example.chess.Board.Team;
 import com.example.chess.Board.Board;
 import com.example.chess.Board.Move;
 
+import java.util.Collection;
 import java.util.List;
 
 public class Knight extends Piece {
@@ -18,8 +19,13 @@ public class Knight extends Piece {
     }
 
     @Override
-    public List<Move> getPossibleMoves(final Board board) {
+    public Collection<Move> getPossibleMoves(final Board board) {
         return getPossibleMovesStrategy.getPossibleMoves(board, this);
+    }
+
+    @Override
+    public Knight move(final Move move) {
+        return new Knight(move.getDestination(), move.getPieceMoved().getTeam());
     }
 
 }

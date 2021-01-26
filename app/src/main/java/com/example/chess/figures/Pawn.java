@@ -6,6 +6,7 @@ import com.example.chess.GetMovesStrategy.IGetPossibleMovesStrategy;
 import com.example.chess.Board.Move;
 import com.example.chess.Board.Team;
 
+import java.util.Collection;
 import java.util.List;
 
 public class Pawn extends Piece{
@@ -18,8 +19,13 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public List<Move> getPossibleMoves(final Board board) {
+    public Collection<Move> getPossibleMoves(final Board board) {
         return this.getPossibleMovesStrategy.getPossibleMoves(board, this);
+    }
+
+    @Override
+    public Pawn move(final Move move) {
+        return new Pawn(move.getDestination(), move.getPieceMoved().getTeam());
     }
 
 }

@@ -460,7 +460,8 @@
         android:layout_toLeftOf="@id/btnDraw"
         android:layout_marginRight="10dp"
         android:text="SURRENDER BLACK"
-        android:textSize="10dp"/>
+        android:textSize="10dp"
+        android:onClick="onSurrenderWhite"/>
 
     <Button
         android:id="@+id/btnSurrenderWhite"
@@ -472,7 +473,8 @@
         android:layout_toRightOf="@id/btnDraw"
         android:layout_marginLeft="10dp"
         android:text="SURRENDER WHITE"
-        android:textSize="10dp"/>
+        android:textSize="10dp"
+        android:onClick="onSurrenderBlack"/>
 
     <Button
         android:id="@+id/btnDraw"
@@ -481,5 +483,6 @@
         android:layout_below="@id/tableMain"
         android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:text="DRAW" />
+        android:text="DRAW"
+        android:onClick="onDraw"/>
 </RelativeLayout>
