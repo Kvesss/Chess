@@ -61,9 +61,6 @@ public abstract class Player {
         return this.possibleMoves.isEmpty() && !isCheck();
     }
 
-    public boolean hasCastled(){
-        return false;
-    }
 
     public MoveExecution initiateMove(final Move move){
         if(isMoveLegal(move)){
@@ -100,6 +97,13 @@ public abstract class Player {
         }
         throw new RuntimeException("There is no King!");
     }
+
+
+    protected boolean canCastle() {
+        return !this.isCheck && !this.playerKing.hasCastled() &&
+                (this.playerKing.isFourSideCastleCapable() || this.playerKing.isFiveSideCastleCapable());
+    }
+
 
 
 

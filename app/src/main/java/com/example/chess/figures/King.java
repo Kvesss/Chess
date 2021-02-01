@@ -7,15 +7,21 @@ import com.example.chess.Board.Move;
 import com.example.chess.Board.Team;
 
 import java.util.Collection;
-import java.util.List;
 
 public class King extends Piece{
 
     private IGetPossibleMovesStrategy getPossibleMovesStrategy;
+    private final boolean hasCastled;
+    private final boolean fourSideCastleCapable;
+    private final boolean fiveSideCastleCapable;
 
-    public King(final int position,final Team team) {
+
+    public King(final int position, final Team team, boolean fourSideCastleCapable, boolean fiveSideCastleCapable) {
         super(position, team, Type.KING);
+        this.fourSideCastleCapable = fourSideCastleCapable;
+        this.fiveSideCastleCapable = fiveSideCastleCapable;
         this.getPossibleMovesStrategy = new GetPossibleKingMoves();
+        this.hasCastled = false;
     }
 
     @Override
@@ -25,7 +31,18 @@ public class King extends Piece{
 
     @Override
     public King move(final Move move) {
-        return new King(move.getDestination(), move.getPieceMoved().getTeam());
+        return new King(move.getDestination(), move.getPieceMoved().getTeam(), false, false);
     }
 
+    public boolean hasCastled() {
+        return this.hasCastled;
+    }
+
+    public boolean isFourSideCastleCapable() {
+        return fourSideCastleCapable;
+    }
+
+    public boolean isFiveSideCastleCapable() {
+        return fiveSideCastleCapable;
+    }
 }
