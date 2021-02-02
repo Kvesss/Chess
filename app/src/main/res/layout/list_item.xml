@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="100dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginLeft="10dp"
@@ -32,6 +32,15 @@
             android:textSize="20dp"
             android:textStyle="italic"/>
 
+        <TextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvGameWinner"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="30dp"
+            />
+
         <ImageButton
             android:id="@+id/btnRemove"
             android:layout_width="wrap_content"
@@ -39,7 +48,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:src="@android:drawable/ic_delete"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
             android:backgroundTint="@color/Sienna"
             android:onClick="removeName"/>

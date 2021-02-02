@@ -2,8 +2,6 @@ package com.example.chess;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,14 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GamesViewFragment extends Fragment implements ButtonClickListener {
 
+
+    DatabaseHelper databaseHelper;
     private RecyclerView recyclerView;
-//    private List<String> gameList;
-//    private List<String> winnersList;
     private List<Game> gameList;
     private CustomAdapter customAdapter;
 
@@ -34,6 +31,7 @@ public class GamesViewFragment extends Fragment implements ButtonClickListener {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_games_view, container, false);
+        databaseHelper = new DatabaseHelper(getContext());
         setupGames();
         setupRecyclerView(view);
         return view;
@@ -48,25 +46,13 @@ public class GamesViewFragment extends Fragment implements ButtonClickListener {
 
     private void setupGames(){
         //TODO database
-        gameList = new ArrayList<>();
-
-//        gameList.add("Edgar Davids");
-//        gameList.add("Hernan Crespo");
-//        gameList.add("Andy Cole");
-//        winnersList = new ArrayList<>();
-//        winnersList.add("Edgar Davids");
-//        winnersList.add("Hernan Crespo");
-//        winnersList.add("Andy Cole");
-        gameList.add(new Game("Carlsen Anand", "Carlsen"));
-        gameList.add(new Game("Carlsen Anand", "Carlsen"));
-        gameList.add(new Game("Carlsen Anand", "Carlsen"));
+        gameList = databaseHelper.getAllGames();
 
     }
 
     private void setupRecyclerView(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewGames);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        customAdapter = new CustomAdapter(gameList, winnersList, this);
         customAdapter = new CustomAdapter(gameList, this);
         recyclerView.setAdapter(customAdapter);
     }

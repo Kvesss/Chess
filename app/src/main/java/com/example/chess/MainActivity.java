@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         setupFragments();
     }
 
-    public void onStartClick(View v){
-        Intent intent = new Intent(MainActivity.this, ChessBoard.class);
-        startActivity(intent);
-    }
+//    public void onStartClick(View v){
+//        Intent intent = new Intent(MainActivity.this, ChessBoard.class);
+//        startActivity(intent);
+//    }
 
     private void setupFragments() {
         List<Fragment> fragmentList = new ArrayList<>();

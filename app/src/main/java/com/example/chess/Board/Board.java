@@ -83,7 +83,7 @@ public class Board {
             return ImmutableList.copyOf(chessTeam);
         }
 
-    private List<Move> getPossibleMoves(final List<Piece> team) {
+    public List<Move> getPossibleMoves(final List<Piece> team) {
         List<Move> allPossibleMoves = new ArrayList<>();
         for (Piece piece : team) {
             allPossibleMoves.addAll(piece.getPossibleMoves(this));

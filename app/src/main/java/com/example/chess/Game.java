@@ -1,13 +1,19 @@
 package com.example.chess;
 
+import java.time.LocalDateTime;
+
 public class Game {
 
+    private final int id;
     private final String players;
     private final String winner;
+    private final String dateTime;
 
-    public Game(String players, String winner) {
+    public Game(int id, String players, String winner, String dateTime) {
+        this.id = id;
         this.players = players;
         this.winner = winner;
+        this.dateTime = dateTime;
     }
 
     public String getPlayers() {
@@ -16,5 +22,13 @@ public class Game {
 
     public String getWinner() {
         return winner;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDateTime() {
+        return dateTime;
     }
 }

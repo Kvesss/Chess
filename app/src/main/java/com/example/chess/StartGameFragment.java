@@ -15,8 +15,8 @@ import android.widget.EditText;
 
 
 public class StartGameFragment extends Fragment {
-    private EditText player1;
-    private EditText player2;
+    private EditText playerBlack;
+    private EditText playerWhite;
 
 
     public static StartGameFragment newInstance() {
@@ -31,6 +31,12 @@ public class StartGameFragment extends Fragment {
         Button btnStart = view.findViewById(R.id.btnStart);
         btnStart.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), ChessBoard.class);
+            String blackPlayer = playerBlack.getText().toString();
+            playerBlack.setText("");
+            String whitePlayer = playerWhite.getText().toString();
+            playerWhite.setText("");
+            intent.putExtra("whitePlayer", whitePlayer);
+            intent.putExtra("blackPlayer", blackPlayer);
             startActivity(intent);
         });
         return view;
@@ -39,13 +45,9 @@ public class StartGameFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        player1 = view.findViewById(R.id.etPlayerOne);
-        player2 = view.findViewById(R.id.etPlayerTwo);
+        playerBlack = view.findViewById(R.id.etPlayerBlack);
+        playerWhite = view.findViewById(R.id.etPlayerWhite);
 
     }
 
-    public void onStartClick(View v) {
-        Intent intent = new Intent(getActivity(), ChessBoard.class);
-        startActivity(intent);
-    }
 }

@@ -13,14 +13,11 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHolder> {
 
-//    private final List<String> gameList;
-//    private final List<String> winnersList;
     private final List<Game> gameList;
     private final ButtonClickListener buttonClickListener;
 
     public CustomAdapter(List<Game> gameList, ButtonClickListener buttonClickListener) {
         this.gameList = gameList;
-        //this.winnersList = winnersList;
         this.buttonClickListener = buttonClickListener;
     }
 
@@ -34,7 +31,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.NameViewHolder holder, int position) {
-        holder.setGame(gameList.get(position).getPlayers(), gameList.get(position).getWinner());
+        holder.setGame(gameList.get(position).getPlayers(), gameList.get(position).getWinner(), gameList.get(position).getDateTime());
     }
 
     @Override
@@ -42,16 +39,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
         return gameList.size();
     }
 
-//    public void addNewGame(String players, String gameWinner){
-//        gameList.add(players);
-//        winnersList.add(gameWinner);
-//        notifyItemInserted(gameList.size());
-//    }
 
     public void removeGame(int position){
         if(gameList.size() > position){
             gameList.remove(position);
-//            winnersList.remove(position);
             notifyItemRemoved(position);
         }
     }
@@ -62,6 +53,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
         private final ButtonClickListener buttonClickListener;
         private final TextView matchNames;
         private final TextView winner;
+        private final TextView tvDateTime;
         private final ImageButton buttonRemove;
 
         public NameViewHolder(@NonNull View itemView, ButtonClickListener buttonClickListener) {
@@ -69,6 +61,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
             matchNames = itemView.findViewById(R.id.tvMatchNames);
             winner = itemView.findViewById(R.id.tvGameWinner);
             buttonRemove = itemView.findViewById(R.id.btnRemove);
+            tvDateTime = itemView.findViewById(R.id.tvDateTime);
             this.buttonClickListener = buttonClickListener;
             buttonRemove.setOnClickListener(this);
 
@@ -80,9 +73,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
 
         }
 
-        public void setGame(String players, String gameWinner) {
+        public void setGame(String players, String gameWinner, String dateTime) {
             matchNames.setText(players);
             winner.setText(gameWinner);
+            tvDateTime.setText(dateTime);
         }
     }
 }

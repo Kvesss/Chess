@@ -12,7 +12,7 @@ public abstract class Field {
     protected final int coordinate;
     private static final Map<Integer, EmptyField> EMPTY_FIELD_MAP = createAllPossibleEmptyFields();
 
-    private static Map<Integer, EmptyField> createAllPossibleEmptyFields() {    //Immutable
+    public static Map<Integer, EmptyField> createAllPossibleEmptyFields() {    //Immutable
         final Map<Integer, EmptyField> emptyFieldMap = new HashMap<>();
 
         for(int i = 0;i < BoardFuntions.NUMBER_OF_FIELDS; i++){

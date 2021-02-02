@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/Bisque"
+    tools:context=".ChessBoard">
 
+
+    <Button
+        android:id="@+id/btnSurrenderBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="560dp"
+        android:text="SURRENDER BLACK"
+        android:rotationY="180"
+        android:rotationX="180"
+        android:onClick="onSurrenderBlack"
+        />
+    <Button
+        android:text="UNDO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/undo_button2"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:onClick="undo"
+        android:rotationY="180"
+        android:rotationX="180"
+        />
+
+
+    <Button
+        android:id="@+id/btnSurrenderWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="560dp"
+        android:text="SURRENDER WHITE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onSurrenderWhite"
+        />
+
+    <Button
+        android:text="UNDO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/undo_button"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:onClick="undo" />
+
+    <Button
+        android:id="@+id/btnDrawBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="DRAW"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp"
+        android:onClick="onDraw"
+        android:rotationY="180"
+        android:rotationX="180"/>
+
+    <Button
+        android:id="@+id/btnDrawWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="DRAW"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="16dp"
+        android:onClick="onDraw"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@color/white"
+        android:id="@+id/imageView2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="fitXY" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -985,5 +1078,102 @@
             android:layout_width="43dp"
             android:layout_height="43dp" />
     </GridLayout>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="45sp"
+        android:id="@+id/pawn_chioces"
+        android:background="#dcf18d6d"
+        >
+
+        <TextView
+            android:text="Queen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pawn_queen"
+            android:textSize="40sp"
+            android:padding="5sp"
+            android:layout_margin="5sp"
+            android:drawableLeft="@drawable/wqueen"
+            android:drawableRight="@drawable/bqueen"
+            android:textAlignment="center"
+            android:background="#ffffff"
+            android:textColor="#e60f0f"
+            android:onClick="pawnChoice"
+            android:elevation="6dp"/>
+
+        <TextView
+            android:text="Bishop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pawn_bishop"
+            android:textSize="40sp"
+            android:padding="5sp"
+            android:layout_margin="5sp"
+            android:drawableLeft="@drawable/wbishop"
+            android:drawableRight="@drawable/bbishop"
+            android:textAlignment="center"
+            android:background="#ffffff"
+            android:textColor="#4b84ba"
+            android:onClick="pawnChoice"
+            android:elevation="6dp"/>
+
+        <TextView
+            android:text="Rook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pawn_rook"
+            android:textSize="40sp"
+            android:padding="5sp"
+            android:layout_margin="5sp"
+            android:drawableRight="@drawable/brook"
+            android:drawableLeft="@drawable/wrook"
+            android:textAlignment="center"
+            android:background="#ffffff"
+            android:textColor="#23bc32"
+            android:onClick="pawnChoice"
+            android:elevation="6dp"/>
+
+        <TextView
+            android:text="Knight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pawn_knight"
+            android:textSize="40sp"
+            android:padding="5sp"
+            android:layout_margin="5sp"
+            android:drawableLeft="@drawable/wknight"
+            android:drawableRight="@drawable/bknight"
+            android:textAlignment="center"
+            android:background="#ffffff"
+            android:textColor="#4b84ba"
+            android:onClick="pawnChoice"
+            android:elevation="6dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text="Game Over !!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/game_over"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="60sp"
+        android:textColor="@color/colorPrimaryDark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
