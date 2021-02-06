@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -52,16 +53,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-
-    public Cursor getAllData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM "+ TABLE_NAME, null);
-        return res;
-
-    }
+    
 
     public ArrayList<Game> getAllGames(){
-        String query = "select * from " + TABLE_NAME + " ORDER BY TIME DESC;";
+        String query = "select * from " + TABLE_NAME + " ORDER BY ID DESC;";
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Game> games = new ArrayList<>();
         Cursor cursor = db.rawQuery(query, null);

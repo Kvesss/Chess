@@ -1,9 +1,26 @@
 <resources>
     <string name="app_name">ChessDuo</string>
-    <string name="player1hint">Enter Black Player...</string>
-    <string name="player2hint">Enter White Player...</string>
+    <string name="player1hint">Enter Black Player…</string>
+    <string name="player2hint">Enter White Player…</string>
     <string name="btnStart">START</string>
     <string name="tvCongrats"><i><b>CONGRATULATIONS</b></i></string>
     <string name="tvWinner"><i><b>WINNER</b></i></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bundleKeyWinner">Winner</string>
+    <string name="toastDataSuccessful">Game saved</string>
+    <string name="toastDataUnsuccessful">Unsuccessful </string>
+    <string name="draw">DRAW</string>
+    <string name="versus">\ vs \</string>
+    <string name="bundleKeyWhitePlayer">whitePlayer</string>
+    <string name="bundleKeyBlackPlayer">blackPlayer</string>
+    <string name="tvGameOver">\ WINS</string>
+    <string name="tvQueen">Queen</string>
+    <string name="tvBishop">Bishop</string>
+    <string name="tvRook">Rook</string>
+    <string name="tvKnight">Knight</string>
+    <string name="btnTextDraw">DRAW</string>
+    <string name="btnTextUndo">UNDO</string>
+    <string name="btnTextSurrWhite">SURRENDER WHITE</string>
+    <string name="btnTextSurrBlack">SURRENDER BLACK</string>
+    <string name="btnPlay">Play</string>
 </resources>

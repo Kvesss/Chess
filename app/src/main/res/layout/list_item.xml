@@ -2,10 +2,11 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/scoreItemMargin"
+    android:layout_marginRight="@dimen/scoreItemMargin"
+    android:layout_marginLeft="@dimen/scoreItemMargin"
+    android:layout_marginBottom="@dimen/scoreItemMargin"
     android:background="@drawable/curved">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,20 +17,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:text="Player 1 Vs Player 2 "
-            android:textSize="25dp"
+            android:layout_marginStart="@dimen/itemTvMarginLeft"
+            android:textSize="25sp"
             android:textStyle="italic"/>
 
         <TextView
             android:id="@+id/tvGameWinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Winner: Player 1"
             android:layout_below="@+id/tvMatchNames"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="30dp"
-            android:textSize="20dp"
+            android:layout_marginStart="@dimen/itemTvMarginLeft"
+            android:textSize="20sp"
             android:textStyle="italic"/>
 
         <TextView
@@ -38,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvGameWinner"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="@dimen/itemTvMarginLeft"
+            android:layout_marginBottom="10dp"
             />
 
         <ImageButton
@@ -46,10 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:src="@android:drawable/ic_delete"
             android:layout_marginTop="25dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="@color/Sienna"
             android:onClick="removeName"/>
 

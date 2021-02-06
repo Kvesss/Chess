@@ -3,31 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/openingscreen"
+    android:isScrollContainer="false"
     tools:context=".StartGameFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/white_field">
+        android:isScrollContainer="false"
+        >
 
         <EditText
             android:id="@+id/etPlayerBlack"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="50dp"
-            android:hint="@string/player1hint" />
+            android:layout_marginLeft="@dimen/etPlayersHorizontalMargin"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="@dimen/etPlayersHorizontalMargin"
+            android:hint="@string/player1hint"
+            android:background="@drawable/curved_bisque"/>
 
         <EditText
-        android:id="@+id/etPlayerWhite"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/etPlayerBlack"
-        android:layout_marginTop="90dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:hint="@string/player2hint"
+            android:id="@+id/etPlayerWhite"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/etPlayerBlack"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="@dimen/etPlayersHorizontalMargin"
+            android:layout_marginRight="@dimen/etPlayersHorizontalMargin"
+            android:hint="@string/player2hint"
+            android:background="@drawable/curved_bisque"
         />
 
     <Button
@@ -38,7 +43,7 @@
         android:layout_below="@id/etPlayerWhite"
         android:layout_marginTop="100dp"
         android:layout_centerInParent="true"
-        android:onClick="onStartClick"/>
+        />
 
     </RelativeLayout>
 

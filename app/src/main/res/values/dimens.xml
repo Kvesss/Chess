@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="boardBtnMargin">16dp</dimen>
+    <dimen name="boardBtnTextSize">10sp</dimen>
+    <dimen name="boardFieldDimen">43dp</dimen>
+    <dimen name="boardFigureElevation">1dp</dimen>
+    <dimen name="pawnPromotiontextSize">40sp</dimen>
+    <dimen name="pawnPromotionMargin">5dp</dimen>
+    <dimen name="pawnPromotionElevation">6dp</dimen>
+    <dimen name="pawnPromotionPadding">45dp</dimen>
+    <dimen name="tvTitleSize">50sp</dimen>
+    <dimen name="titleMargin">100dp</dimen>
+    <dimen name="etPlayersHorizontalMargin">50dp</dimen>
+    <dimen name="scoreItemMargin">10dp</dimen>
+    <dimen name="itemTvMarginLeft">30dp</dimen>
+    <dimen name="tvCongratsMargin">250dp</dimen>
+    <dimen name="tvWinnerMArgin">100dp</dimen>
+    <dimen name="congratsSplashTextSize">32sp</dimen>
+</resources>

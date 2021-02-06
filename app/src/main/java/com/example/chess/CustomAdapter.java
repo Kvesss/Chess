@@ -75,7 +75,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
 
         public void setGame(String players, String gameWinner, String dateTime) {
             matchNames.setText(players);
-            winner.setText(gameWinner);
+            winner.setText(!gameWinner.equals("DRAW") ? "WINNER: " + gameWinner : gameWinner);
             tvDateTime.setText(dateTime);
         }
     }

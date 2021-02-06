@@ -1,5 +1,6 @@
 package com.example.chess;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,7 +8,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
@@ -21,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setupFragments();
     }
 
-//    public void onStartClick(View v){
-//        Intent intent = new Intent(MainActivity.this, ChessBoard.class);
-//        startActivity(intent);
-//    }
 
     private void setupFragments() {
         List<Fragment> fragmentList = new ArrayList<>();
@@ -42,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(GamesViewFragment.newInstance());
         SlidePagerAdapter adapter = new SlidePagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+        viewPager.setPageTransformer(true, new FlipHorizontalPageTransformer());
         tabLayout.setupWithViewPager(viewPager);
     }
 
@@ -50,4 +49,18 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.itemChessGuide){
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://Kvesss.github.io"));
+            startActivity(browserIntent);
+        }
+        return true;
+    }
 }

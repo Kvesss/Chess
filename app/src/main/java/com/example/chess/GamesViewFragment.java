@@ -41,11 +41,12 @@ public class GamesViewFragment extends Fragment implements ButtonClickListener {
 
     @Override
     public void onButtonClick(int position) {
+        databaseHelper.deleteGame(gameList.get(position).getId());
         ((CustomAdapter)recyclerView.getAdapter()).removeGame(position);
+
     }
 
     private void setupGames(){
-        //TODO database
         gameList = databaseHelper.getAllGames();
 
     }

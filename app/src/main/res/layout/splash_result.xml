@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/white_field"
+    android:background="@color/Bisque"
     >
 
 
@@ -11,10 +11,10 @@
         android:id="@+id/tvCongrats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="@dimen/tvCongratsMargin"
         android:text="@string/tvCongrats"
         android:gravity="center_horizontal"
-        android:textSize="32dp"
+        android:textSize="@dimen/congratsSplashTextSize"
         />
 
     <TextView
@@ -22,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCongrats"
-        android:layout_marginTop="100dp"
-        android:textSize="32dp"
+        android:layout_marginTop="@dimen/tvWinnerMArgin"
+        android:textSize="@dimen/congratsSplashTextSize"
         android:textStyle="italic|bold"
         android:layout_centerHorizontal="true"
         android:text="@string/tvWinner"/>
