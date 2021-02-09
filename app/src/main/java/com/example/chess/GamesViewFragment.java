@@ -54,7 +54,7 @@ public class GamesViewFragment extends Fragment implements ButtonClickListener {
     private void setupRecyclerView(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewGames);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        customAdapter = new CustomAdapter(gameList, this);
+        customAdapter = new CustomAdapter(gameList, this, this.getContext());
         recyclerView.setAdapter(customAdapter);
     }
 }

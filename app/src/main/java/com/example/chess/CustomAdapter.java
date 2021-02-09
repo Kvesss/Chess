@@ -1,5 +1,6 @@
 package com.example.chess;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
 
     private final List<Game> gameList;
     private final ButtonClickListener buttonClickListener;
+    Context context;
 
-    public CustomAdapter(List<Game> gameList, ButtonClickListener buttonClickListener) {
+    public CustomAdapter(List<Game> gameList, ButtonClickListener buttonClickListener, Context context) {
         this.gameList = gameList;
         this.buttonClickListener = buttonClickListener;
+        this.context = context;
     }
 
 
@@ -26,7 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
     @Override
     public CustomAdapter.NameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View listItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new NameViewHolder(listItemView, buttonClickListener);
+        return new NameViewHolder(listItemView, buttonClickListener, this.context);
     }
 
     @Override
@@ -55,8 +58,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
         private final TextView winner;
         private final TextView tvDateTime;
         private final ImageButton buttonRemove;
+        private Context context;
 
-        public NameViewHolder(@NonNull View itemView, ButtonClickListener buttonClickListener) {
+        public NameViewHolder(@NonNull View itemView, ButtonClickListener buttonClickListener, Context context) {
             super(itemView);
             matchNames = itemView.findViewById(R.id.tvMatchNames);
             winner = itemView.findViewById(R.id.tvGameWinner);
@@ -64,6 +68,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
             tvDateTime = itemView.findViewById(R.id.tvDateTime);
             this.buttonClickListener = buttonClickListener;
             buttonRemove.setOnClickListener(this);
+            this.context = context;
 
         }
 
@@ -75,7 +80,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.NameViewHo
 
         public void setGame(String players, String gameWinner, String dateTime) {
             matchNames.setText(players);
-            winner.setText(!gameWinner.equals("DRAW") ? "WINNER: " + gameWinner : gameWinner);
+            winner.setText(!gameWinner.equals(context.getString(R.string.draw)) ? context.getString(R.string.tvWinnerHistory) + gameWinner : gameWinner);
             tvDateTime.setText(dateTime);
         }
     }

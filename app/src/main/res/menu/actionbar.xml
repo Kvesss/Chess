@@ -4,6 +4,17 @@
     <item
         android:id="@+id/itemChessGuide"
         android:title="ChessGuide"
-
         />
+    <item
+        android:id="@+id/langMenu"
+        android:title="@string/language">
+        <menu>
+            <item
+                android:id="@+id/eng"
+                android:title="@string/english"/>
+            <item
+                android:id="@+id/cro"
+                android:title="@string/croatian"/>
+        </menu>
+    </item>
 </menu>

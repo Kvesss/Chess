@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">ChessDuo</string>
+    <string name="player1hint">Ime igrača crnih…</string>
+    <string name="player2hint">ime igrača bijelih…</string>
+    <string name="btnStart">ZAPOČNITE</string>
+    <string name="tvCongrats"><i><b>ČESTITKE</b></i></string>
+    <string name="tvWinner"><i><b>POBJEDNIK</b></i></string>
+    <string name="hello_blank_fragment">Zdravo</string>
+    <string name="bundleKeyWinner">Winner</string>
+    <string name="toastDataSuccessful">Igra je spremljena</string>
+    <string name="toastDataUnsuccessful">Pogreška pri spremanju</string>
+    <string name="draw">NERIJEŠENO</string>
+    <string name="versus">\ vs \</string>
+    <string name="bundleKeyWhitePlayer">whitePlayer</string>
+    <string name="bundleKeyBlackPlayer">blackPlayer</string>
+    <string name="tvGameOver">\ POBIJEDIO JE </string>
+    <string name="tvQueen">kraljica</string>
+    <string name="tvBishop">lovac</string>
+    <string name="tvRook">top</string>
+    <string name="tvKnight">konj</string>
+    <string name="btnTextDraw">NERIJEŠENO</string>
+    <string name="btnTextUndo">VRATI</string>
+    <string name="btnTextSurrWhite">BIJELI PREDAJA</string>
+    <string name="btnTextSurrBlack">CRNI PREDAJA</string>
+    <string name="btnPlay">IGRAJ</string>
+    <string name="english">engleski</string>
+    <string name="croatian">hrvatski</string>
+    <string name="language">Jezik</string>
+    <string name="tabNewGame">Nova Igra</string>
+    <string name="tabHistory">Prošle Igre</string>
+    <string name="tvWinnerHistory">POBJEDNIK: \ </string>
+</resources>

@@ -1,5 +1,7 @@
 package com.example.chess;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -11,9 +13,11 @@ import java.util.List;
 public class SlidePagerAdapter extends FragmentStatePagerAdapter {
 
     private static final int NUM_PAGES = 2;
+    Context context;
 
-    public SlidePagerAdapter(@NonNull FragmentManager fm) {
+    public SlidePagerAdapter(@NonNull FragmentManager fm, Context context) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        this.context = context;
     }
 
     @NonNull
@@ -30,6 +34,6 @@ public class SlidePagerAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return (position == 0) ? "New Game" : "History";
+        return (position == 0) ? context.getString(R.string.tabNewGame) : context.getString(R.string.tabHistory);
     }
 }

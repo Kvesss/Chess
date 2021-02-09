@@ -23,4 +23,10 @@
     <string name="btnTextSurrWhite">SURRENDER WHITE</string>
     <string name="btnTextSurrBlack">SURRENDER BLACK</string>
     <string name="btnPlay">Play</string>
+    <string name="english">English</string>
+    <string name="croatian">Croatian</string>
+    <string name="language">Language</string>
+    <string name="tabNewGame">New Game</string>
+    <string name="tabHistory">History</string>
+    <string name="tvWinnerHistory">WINNER: \ </string>
 </resources>

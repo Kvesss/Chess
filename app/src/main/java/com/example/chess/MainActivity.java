@@ -8,8 +8,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(StartGameFragment.newInstance());
         fragmentList.add(GamesViewFragment.newInstance());
-        SlidePagerAdapter adapter = new SlidePagerAdapter(getSupportFragmentManager());
+        SlidePagerAdapter adapter = new SlidePagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(adapter);
         viewPager.setPageTransformer(true, new FlipHorizontalPageTransformer());
         tabLayout.setupWithViewPager(viewPager);
@@ -60,6 +64,26 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.itemChessGuide){
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://Kvesss.github.io"));
             startActivity(browserIntent);
+        }
+        if(item.getItemId() == R.id.eng){
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration config = res.getConfiguration();
+            config.setLocale(new Locale(""));
+            res.updateConfiguration(config, dm);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
+        if (item.getItemId() == R.id.cro){
+            Resources res = getResources();
+            DisplayMetrics dm = res.getDisplayMetrics();
+            Configuration config = res.getConfiguration();
+            config.setLocale(new Locale("hr"));
+            res.updateConfiguration(config, dm);
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         }
         return true;
     }
